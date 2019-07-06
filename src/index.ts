@@ -1,12 +1,12 @@
-import * as fs from 'fs';
-import * as util from 'util';
+#!/usr/bin/env node
 
-const readFile = util.promisify(fs.readFile);
+import * as yargs from 'yargs';
+import * as pkg from '../package.json';
+import * as itemsCommand from './items/command';
 
-(async () => {
-
-  const datFile = process.argv[2];
-  const data = await readFile(datFile);
-  console.log(`${data.length} bytes`);
-
-})();
+yargs
+  .scriptName(pkg.name)
+  .usage('$0 <cmd> [args]')
+  .command(itemsCommand)
+  .help()
+  .argv;

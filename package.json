@@ -2,19 +2,24 @@
   "name": "majormud-dat-exporter",
   "version": "0.0.1",
   "description": "Reads and parses MajorMUD DAT files.",
-  "main": "build/index.js",
   "author": "Ryan Zander <exide@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "npm run clean && tsc",
+    "export:items": "node ./build/src/index.js items"
+  },
   "engines": {
     "node": "^12.4.0",
     "npm": "^6.9.0"
   },
-  "scripts": {
-    "start": "tsc"
-  },
   "dependencies": {
     "@types/node": "^12.0.10",
-    "typescript": "^3.5.2"
+    "@types/yargs": "^13.0.0",
+    "typescript": "^3.5.2",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.3"
   }
 }
-
